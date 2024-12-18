@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head></head>
+
+<body>
+  <pre class="mermaid">
+    erDiagram
+    BikeTheft {
+        int ID PK
+        int OBJECTID
+        int Year
+        date ReportedDate
+        date OccurredDate
+        string DayOfWeek
+        string OffenceCategory
+        string BicycleStyle
+        float BicycleValue
+        string BicycleMake
+        string BicycleType
+        string BicycleFrame
+        string BicycleColour
+        int BicycleSpeed
+        int NeighbourhoodID FK
+    }
+
+    CriminalOffence {
+        int OBJECTID PK
+        int Year
+        date ReportedDate
+        int ReportedHour
+        date OccurrenceDate
+        int OccurrenceHour
+        string Weekday
+        string OffenceSummary
+        string OffenceCategory
+        int NeighbourhoodID FK
+    }
+
+    Neighbourhood {
+        int NeighbourhoodID PK
+        string Neighbourhood
+        string Sector
+        string Division
+        string CensusTract
+        float x
+        float y
+    }
+
+    BikeTheft ||--o{ Neighbourhood: "belongs to"
+    CriminalOffence ||--o{ Neighbourhood: "occurs in"
+
+
+    </pre>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  </script>
+
+  <script type="module" src="https://s.brightspace.com/lib/bsi/2024.9.245/unbundled/mathjax.js"></script>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+      if (
+        document.querySelector("math") ||
+        /\$\$|\\\(|\\\[|\\begin{|\\ref{|\\eqref{/.test(
+          document.body.innerHTML
+        )
+      ) {
+        document
+          .querySelectorAll('mspace[linebreak="newline"]')
+          .forEach((elm) => {
+            elm.setAttribute("style", "display: block; height: 0.5rem;");
+          });
+
+        window.D2L.MathJax.loadMathJax({
+          outputScale: 1.5,
+          renderLatex: false,
+          enableMML3Support: false,
+        });
+      }
+    });
+  </script>
+  <script type="module" src="https://s.brightspace.com/lib/bsi/2024.9.245/unbundled/prism.js"></script>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".d2l-code").forEach((code) => {
+        window.D2L.Prism.formatCodeElement(code);
+      });
+    });
+  </script>
+  <script type="module" src="https://s.brightspace.com/lib/bsi/2024.9.245/unbundled/embeds.js"></script>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+      window.D2L.EmbedRenderer.renderEmbeds(document.body);
+    });
+  </script>
+</body>
+
+</html>
